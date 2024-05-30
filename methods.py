@@ -2,7 +2,7 @@
 import numpy as np
 
 
-def sigmoid(x):
+def normSig(x):
     '''
     Used to normalize data. X is a float value. Called in normData()
     '''
@@ -20,7 +20,7 @@ def normData(data):
             mean = data[att].mean()
             std = data[att].std()
             norm_hash = [(h - mean) / std for h in data[att]]
-            mapped_val = [sigmoid(hv) for hv in norm_hash]
+            mapped_val = [normSig(hv) for hv in norm_hash]
             data[att] = mapped_val
     return data
 
@@ -32,7 +32,7 @@ def condit(i):
         return 0
     elif i == "Q":
         return 1
-    else:
+    elif i == "C":
         return 2
     
 def strToFloat(data):
